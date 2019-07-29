@@ -21,6 +21,13 @@
 				font-size: 1.6em;
 			}
 		}
+		/*z-index изменяем для корректного раскрытия меню на моб. устройствах*/
+		header {
+			z-index: 5;
+		}
+		main {
+			z-index: 4;
+		}
 		#logo {
 			height: 180px;
 		}
@@ -65,6 +72,7 @@
 			background-color: #f7f7f7;
 		}
 		#main-menu {
+			z-index: 5;
 			background-color: white;
 			height: 80px;
 			border: 0px;
@@ -85,6 +93,20 @@
 		#main-menu li:first-child {
 			padding-left: 0px;
 		}
+		/*для грамотного отображения после "свертки" меню в мобильную версию*/
+		@media screen and (max-width: 768px) {
+			#main-menu li {
+				border-bottom: 1px solid #cccccc;
+				background-color: white;
+			}
+			#main-menu li:first-child {
+				padding-left: 30px;
+			}
+			#main-menu li:last-child {
+				position: absolute;
+				left: 0px;
+			}
+		}
 		#main-menu li:first-child a {
 			postition: relative;
 			right: 30px;
@@ -103,6 +125,17 @@
 		#banner {
 			width: 1920px;
 		}
+		/*адаптивное расширение картинки с учетом переноса блоков-списков параметров*/
+		@media screen and (max-width: 992px) {
+			#banner {
+				height: 690px;
+			}
+		}
+		@media screen and (max-width: 401px) {
+			#banner {
+				height: 870px;
+			}
+		}
 		.image, .map {
 			position: relative;
 		}
@@ -113,6 +146,12 @@
 			position: absolute;
 			top: 80px;
 			width : 100%;
+		}
+		@media screen and (max-width: 992px) {
+			#banner-tagline {
+				top: 20px;
+				font-size: 35px;
+			}
 		}
 		.contact-card {
 			background-color: #75cfb6;
@@ -182,6 +221,13 @@
 			border-radius: 5px;
 			background-color: white;
 		}
+		@media screen and (max-width: 992px) {
+			#banner-filters {
+				top: 290px;
+				left: 1%;
+				width: 98%;
+			}
+		}
 		#price1, #price2 {
 			margin-top: 10px;
 			margin-bottom: 20px;
@@ -224,8 +270,13 @@
 		#buttons > .btn-group {
 			width:16%;
 		}
+		@media screen and (max-width: 992px) {
+			#buttons > .btn-group {
+				width: 160px;
+			}
+		}
 		#buttons > .btn-group > button {
-			width:100%;
+			width: 100%;
 		}
 		.btn-special {
 			border: 0;
@@ -339,7 +390,7 @@
 			width: 100%;
 		}
 		#offers-wrapper {
-			background-color: #fff30f;
+			background-color: #f7f7f7;
 			padding-top: 70px;
 			padding-left: 9%;
 		}
@@ -356,7 +407,7 @@
 		}
 		.img-offer {
 			width: 100%;
-			height: 680px;
+			height: 690px;
 		}
 		.offer-show {
 			position: absolute;
@@ -381,6 +432,7 @@
 		}
 		a.offer-footer {
 			display: inline-block;
+			background-color: #f7f7f7;
 			padding-left: 10px;
 			margin-right: 5%;
 			margin-top: 1em;
@@ -404,6 +456,12 @@
 				transform: scale(1.1);
 			}
 		}
+		@media screen and (min-width:1600px) {
+			.float-down {
+				position: relative;
+				top: 100px;
+			}
+		}
 		a.offer-footer:hover > img {
 			position: relative;
 			bottom: 2px;
@@ -412,6 +470,67 @@
 			-moz-transform: scale(1.4);
 			-o-transform: scale(1.4);
 			transform: scale(1.4);
+		}
+		#btn-all {
+			width: 360px;
+			background-color: #75cfb6;
+			box-shadow: 0 0 0;
+			margin-top: 20px;
+			margin-bottom: 50px;
+			margin-left: 50%;
+			transform: translate(-65%, 0);
+		}
+		footer {
+			padding-top: 85px;
+			padding-left: 8%;
+			padding-right: 8%;
+		}
+		#about-us {
+			border: 1px solid #cccccc;
+			padding-top: 75px;
+			padding-left: 8%;
+			padding-right: 8%;
+			padding-bottom: 115px;
+		}
+		#about-us > span:not(.img-operations) {
+			font-size: 1.2em;
+		}
+		.img-operations {
+			display: inline-block;
+			vertical-align: text-top;
+			margin-top: 45px;
+			margin-right: 35px;
+		}
+		.img-operations:last-child {
+			margin-right: 0;
+		}
+		.img-operations > img {
+			display: inline-block;
+			transform: scale(1.2);
+			margin-right: 37px;
+			margin-bottom: 10px;
+		}
+		#office1 {
+			width: 200px;
+		}
+		#office1 > img {
+			padding-left: 4px;
+		}
+		#office2 {
+			width: 250px;
+		}
+		#office3 {
+			width: 220px;
+		}
+		#office4 {
+			width: 200px;
+		}
+		#office5 {
+			width: 220px;
+		}
+		#last-paragraph {
+			position: relative;
+			top: 45px;
 		}
 	</style>
 </head>
@@ -488,7 +607,7 @@
 				</div>
 			</a>
 			<div id="banner-filters">
-				<span>Стоимость, млн. руб</span>
+				<span>Стоимость, млн. руб.</span>
 				<div class="row">
 					<div class="col-md-9">
 						<input type="text" class="form-control" name="price1" id="price1">
@@ -513,7 +632,7 @@
 				<div id="buttons">
 					<div class="btn-group">
 					  <button type="button" data-toggle="dropdown" class="dropdown-toggle btn-special">Станция метро<span class="arrow">><span></button>
-						<ul class="dropdown-menu">
+						<ul class="dropdown-menu"> <!-- списки как примеры выбора-->
 						  <li><a href="#">Академическая</a></li>
 						  <li><a href="#">Бауманская</a></li>
 						  <li><a href="#">Спортивная</a></li>
@@ -605,6 +724,7 @@
 								<tr class="no-border"><td class="light">Ипотека:</td><td>Есть</td></tr>
 								<tr class="no-border"><td class="light">Отделка:</td><td>Возможна</td></tr>
 							</tbody></table><br>
+							<!--ссылки-блоки с иконками-->
 							<a href="#" class="offer-footer"> <img src="files/house.png">ИПОТЕКА</a>
 							<a href="#" class="offer-footer"> <img src="files/calendar.png">РАССРОЧКА</a>
 							<a href="#" class="offer-footer"> <img src="files/percentage.png">СКИДКИ</a>
@@ -626,18 +746,17 @@
 							<span>Выхино</span>&nbsp;&nbsp;&nbsp;<span class="light-label">10 минут на транспорте</span><br><br>
 							<span>Московская область, г. Долгопрудный, ул. Набережная</span><br><br>
 							<table class="price-table">
-								<tbody><tr><td class="light">1-комнатные от 30 м²</td><td>6 900 000 р. </td></tr>
-								<tr><td class="light">2-комнатные от 75 м²</td><td>от 22 900 000 р. </td></tr>
+								<tbody><tr><td class="light">1-комнатные от 30 м²</td><td>от 3 239 397 р. </td></tr>
+								<tr><td class="light">2-комнатные от 75 м²</td><td>от 4 734 000 р. </td></tr>
 								<tr><td class="light">3-комнатные от 74 м²</td><td>от 17 400 000 р. </td></tr>
-								<tr><td class="light">4-комнатные от 177 м²</td><td>от 63 200 000 р.</td></tr>
-								<tr class="tr-high no-border"><td class="light">Стадия готовности</td><td>Монтаж завершен. Ввод дома в эксплуатацию в 4 квартале 2019 года / На заселении.</td></tr>
+								<tr class="tr-high no-border"><td class="light">Стадия готовности</td><td>Введен в эксплуатацию / На заселении.</td></tr>
 								<tr class="no-border"><td class="light">Ипотека:</td><td>Есть</td></tr>
 								<tr class="no-border"><td class="light">Отделка:</td><td>Возможна</td></tr>
-							</tbody></table><br>
-							<a href="#" class="offer-footer"> <img src="files/house.png">ИПОТЕКА</a>
-							<a href="#" class="offer-footer"> <img src="files/calendar.png">РАССРОЧКА</a>
-							<a href="#" class="offer-footer"> <img src="files/percentage.png">СКИДКИ</a>
-							<a href="#" class="offer-footer"> <img src="files/ruble.png">СУБСИДИИ</a>
+							</tbody></table>
+							<a href="#" class="offer-footer float-down"> <img src="files/house.png">ИПОТЕКА</a>
+							<a href="#" class="offer-footer float-down"> <img src="files/calendar.png">РАССРОЧКА</a>
+							<a href="#" class="offer-footer float-down"> <img src="files/percentage.png">СКИДКИ</a>
+							<a href="#" class="offer-footer float-down"> <img src="files/ruble.png">СУБСИДИИ</a>
 						</div>
 					</div>
 					<div class="col-sm-12 col-md-6">
@@ -652,8 +771,8 @@
 						<div class="offer-info">
 							<h2><b>ЖК «Лайково»</b></h2><br>
 							<img src="files/metro-blue.png" class="img-responsive metro-icon" align="left">
-							<span>Ховрино</span>&nbsp;&nbsp;&nbsp;<span class="light-label">10 минут на транспорте</span><br><br>
-							<span>Московская область, г. Долгопрудный, ул. Набережная</span><br><br>
+							<span>Ховрино</span>&nbsp;&nbsp;&nbsp;<span class="light-label">15 минут на транспорте</span><br><br>
+							<span>Московская область, г. Долгопрудный, ул. Дирижабельная</span><br><br>
 							<table class="price-table">
 								<tbody><tr><td class="light">1-комнатные от 30 м²</td><td>6 900 000 р. </td></tr>
 								<tr><td class="light">2-комнатные от 75 м²</td><td>от 22 900 000 р. </td></tr>
@@ -675,7 +794,45 @@
 					</div>
 				</div>
 			</div>
+			<button class="btn btn-md" id="btn-all">ВСЕ ПРЕДЛОЖЕНИЯ</button>
 		</div>	
+		<footer>
+			<div id="about-us">
+				 <h3><b>Офис Миэль «В Беляево»</b></h3><br>
+				 <span>— это команда профессиональных экспертов и агентов по недвижимости с
+				 большим багажом риелторской и юридической практики. Основные направления Миэль 
+				 «В Беляево» – это продажа элитной недвижимости и квартир в новостройках. </span><br><br>
+				 <h3><b>Наши специалисты выполняют широкий спектр операций, связанных с недвижимостью:</b></h3>
+				 <span class="img-operations" id="office1">
+					<img src="files/office1.png" align="left">Подбор квартир
+				 </span>
+				 <span class="img-operations" id="office2">
+					<img src="files/office2.png" align="left">
+					Проверка застройщика <br> и/или собственника
+				 </span>
+				 <span class="img-operations" id="office3">
+					<img src="files/office3.png" align="left">
+					Проверка и оформление документов
+				 </span>
+				 <span class="img-operations" id="office4">
+					<img src="files/office4.png" align="left">
+					Юридическая поддержка
+				 </span>
+				 <span class="img-operations" id="office5">
+					<img src="files/office5.png" align="left">
+					Сопровождение сделки
+				 </span><br>
+				 <span id="last-paragraph">
+					 Если вы хотите купить квартиру в элитном жилом комплексе, то мы поможем вам это сделать не только максимально 
+					 комфортно и безопасно, но и выгодно – мы всегда сообщаем о самых интересных акциях и выбираем 
+					 действительно горячие предложения. Кроме того, мы готовы помочь оформить выгодную ипотеку. Каждый клиент 
+					 становится для нас партнером, которого мы готовы защитить от всевозможных рисков и поддержать на всех этапах проведения сделки.
+				 </span>
+			</div>
+			<div id="copyright">
+			
+			</div>
+		</footer>
 	</main>
 	<script>
 		//скрытие блока по нажатию на крестик
