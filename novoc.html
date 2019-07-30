@@ -1,5 +1,5 @@
 <!-- Используемые технологии и шрифты объявлены ниже. В пропорциях между элементами и т.д. ориентировался на макет для ширины экрана 1920px. 
-Адаптивность сделал, насколько это позволяет Bootstrap3 и CSS. Добавлены некоторые анимации кнопок при наведении и dropdown-списки -->
+Адаптивность сделал, насколько это позволяет Bootstrap3 и CSS. Добавлены некоторые анимации кнопок (иконка поиска и т.д.) и dropdown-списки -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -74,12 +74,18 @@
 					</div>
 				</nav>
 			</div>
-			<div class="col-md-1"></div>
+			<div class="col-md-1">
+			</div>
 		</div>
 	</header>
 	<main>
 		<div class="image"> <!-- нужен для грамотного позиционирования элементов поверх картинки -->
 			<img src="files/banner.png" id="banner"> <!-- по мнению верстальщика, тут лучше сделать статичную картинку -->
+			<form id="search-form"> <!-- появляется по нажатию на кнопку поиска -->
+				<div class="form-group">
+					<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ваш запрос">
+				</div>
+			</form>
 			<h1 id="banner-tagline">Купить квартиру в новостройке</h1>
 			<a href="#"> <!-- обертка в виде ссылки для дальнейшего действия, чтобы можно было нажать в любую часть блока -->
 				<div class="contact-card" id="card-1">
@@ -325,7 +331,7 @@
 			</div>
 			<div id="copyright">
 				<span>© 2009–2016 Офис «В Беляево». При использовании материалов ссылка на сайт обязательна </span>
-				<span><img src="files/lamp.png">Разработка и продвижение — «ЭВРИКА»</span>
+				<span><img src="files/lamp.png">Разработка и продвижение — «ЭВРИКА» </span>
 			</div>
 		</footer>
 	</main>
@@ -333,6 +339,15 @@
 		//скрытие блока по нажатию на крестик
 		$('.close').on('click', function() {
 			$('#window').hide();
+		});
+		//появление/скрытие формы поиска по нажатию на иконку в меню
+		$('#search-icon').on('click', function() {
+			if ($('#search-form').css("opacity") == "0") {
+				$('#search-form').css("opacity","1");
+			}
+			if ($('#search-form').css("opacity") == "1") {
+				$('#search-form').css("opacity","0");
+			}
 		});
 		//создание слайдера через методы jquery-ui
 		$(function() {
